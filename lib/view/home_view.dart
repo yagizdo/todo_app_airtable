@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app_airtable/core/network_service.dart';
 import 'package:todo_app_airtable/view/add_todo_view.dart';
 import 'package:todo_app_airtable/widget/todo_builder.dart';
+
+import '../bloc/todo_bloc.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -16,7 +19,7 @@ class _HomeViewState extends State<HomeView> {
   late dynamic getTodos;
   @override
   void initState() {
-    getTodos = _networkService.getAllTodos();
+    BlocProvider.of<TodoBloc>(context).add(GetAllTodos());
     super.initState();
   }
 
@@ -57,9 +60,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: const Text('Todos'),
       ),
-      body: TodoBuilder(
-        future: getTodos,
-      ),
+      body: const TodoBuilder(),
     );
   }
 }

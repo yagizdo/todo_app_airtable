@@ -17,6 +17,10 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
 
       todos = await networkService.getAllTodos();
 
+      for (var i in todos) {
+        print(i.fields!.title);
+      }
+
       emit(GetTodosState(todos));
     });
 
