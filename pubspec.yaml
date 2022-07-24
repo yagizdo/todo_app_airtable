@@ -44,6 +44,11 @@ dependencies:
   # Responsive
   flutter_screenutil: ^5.5.3+2
 
+  # State Management
+  bloc: ^8.0.3
+  flutter_bloc: ^8.0.1
+  meta: ^1.7.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
