@@ -24,8 +24,8 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: SizedBox(
-        height: 80.w,
-        width: 80.w,
+        height: 70.w,
+        width: 70.w,
         child: FloatingActionButton(
           elevation: 10,
           shape: const RoundedRectangleBorder(
@@ -44,9 +44,12 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(Icons.add),
-              Text('Add Todo'),
+            children: [
+              const Icon(Icons.add),
+              Text(
+                'Add Todo',
+                style: TextStyle(fontSize: 11.sp),
+              ),
             ],
           ),
         ),
