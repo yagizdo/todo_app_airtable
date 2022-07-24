@@ -9,11 +9,11 @@ class NetworkService extends NetworkClient implements INetworkService {
     List<Todo> todos = [];
 
     Response response = await dio
-        .get('$baseUrl/v0/$appID/Apps', queryParameters: {"api_key": apiKey});
+        .get('$baseUrl/v0/$appID/Todos', queryParameters: {"api_key": apiKey});
 
     var parsedList = response.data['records'];
 
-    todos = parsedList.map((todo) => Todo.fromJson(todo));
+    todos = parsedList.map<Todo>((todo) => Todo.fromJson(todo)).toList();
 
     return todos;
   }
