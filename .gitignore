@@ -12,6 +12,7 @@
 .buildlog/
 .history
 .svn/
+*.env
 
 # firebase
 firebase_options.dart
