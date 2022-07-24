@@ -24,6 +24,8 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       emit(GetTodosState(todos));
     });
 
-    on<AddTodo>((event, emit) {});
+    on<AddTodo>((event, emit) {
+      networkService.addTodo(event.todo);
+    });
   }
 }

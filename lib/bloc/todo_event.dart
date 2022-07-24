@@ -6,7 +6,7 @@ abstract class TodoEvent {}
 class GetAllTodos extends TodoEvent {}
 
 class AddTodo extends TodoEvent {
-  final Fields todo;
+  final Todo todo;
 
   AddTodo(this.todo);
 }

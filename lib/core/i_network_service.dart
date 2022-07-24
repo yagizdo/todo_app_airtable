@@ -2,5 +2,5 @@ import '../model/todo.dart';
 
 abstract class INetworkService {
   Future<List<Todo>> getAllTodos();
-  Future<void> addTodo(Fields todo);
+  Future<void> addTodo(Todo todo);
 }

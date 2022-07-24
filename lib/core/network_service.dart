@@ -18,11 +18,33 @@ class NetworkService extends NetworkClient implements INetworkService {
     return todos;
   }
 
-  @override
-  Future<void> addTodo(Fields todo) async {
-    dio.options.headers['content-Type'] = 'application/json';
+  // Model example
+  /*
 
+  "fields": {
+            "title": todo.fields!.title,
+            "description": todo.fields?.description ?? "",
+            "file": [
+              {
+                "url":
+                    "https://dl.airtable.com/.attachments/abe36ae626bf1e27ea6aa367669e1d47/0913658a/todo.png?ts=1658687203&userId=usrwTzN0QAnEIShut&cs=ab9a9d3e57a47b8f"
+              }
+            ]
+          }
+
+   */
+  @override
+  Future<void> addTodo(Todo todo) async {
     await dio.post('$baseUrl/v0/$appID/Todos',
-        queryParameters: {"data": Fields(title: 'Test', description: 'Test2')});
+        data: {
+          "fields": {
+            "title": todo.fields!.title,
+            "description": todo.fields?.description ?? "",
+          }
+        },
+        options: Options(headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $apiKey",
+        }));
   }
 }
