@@ -72,10 +72,25 @@ class _AddTodoViewState extends State<AddTodoView> {
               ),
             ),
 
+            // Sizedbox for padding
+            SizedBox(
+              height: 10.h,
+            ),
+
             // Add To-do Button
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Add Todo'),
+            SizedBox(
+              width: 250.w,
+              height: 40.h,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                ),
+                child: const Text(
+                  'Add Todo',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
             ),
           ],
         ),
