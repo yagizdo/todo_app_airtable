@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app_airtable/core/network_service.dart';
+import 'package:todo_app_airtable/view/add_todo_view.dart';
 import 'package:todo_app_airtable/widget/todo_builder.dart';
 
 class HomeView extends StatefulWidget {
@@ -32,7 +33,14 @@ class _HomeViewState extends State<HomeView> {
               Radius.circular(20),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AddTodoView(),
+              ),
+            );
+          },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
