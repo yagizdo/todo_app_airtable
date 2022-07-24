@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddTodoView extends StatefulWidget {
   const AddTodoView({Key? key}) : super(key: key);
@@ -38,26 +39,36 @@ class _AddTodoViewState extends State<AddTodoView> {
         child: Column(
           children: [
             // Title
-            TextFormField(
-              controller: titleController,
-              decoration: const InputDecoration(
-                hintText: 'Title',
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                  Radius.elliptical(20, 30),
-                )),
+            Padding(
+              padding: EdgeInsets.all(10.w),
+              child: TextFormField(
+                controller: titleController,
+                decoration: const InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.green, width: 2.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 2.0),
+                  ),
+                  hintText: 'Title',
+                ),
               ),
             ),
 
             // Description
-            TextFormField(
-              controller: descController,
-              decoration: const InputDecoration(
-                hintText: 'Description',
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                  Radius.elliptical(20, 30),
-                )),
+            Padding(
+              padding: EdgeInsets.all(10.w),
+              child: TextFormField(
+                controller: descController,
+                decoration: const InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.green, width: 2.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 2.0),
+                  ),
+                  hintText: 'Description',
+                ),
               ),
             ),
 
