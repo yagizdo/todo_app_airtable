@@ -8,16 +8,18 @@ part 'todo_event.dart';
 part 'todo_state.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
+  final NetworkService networkService = NetworkService();
+
   TodoBloc() : super(TodoInitial()) {
     on<TodoEvent>((event, emit) {});
     on<GetAllTodos>((event, emit) async {
-      final NetworkService networkService = NetworkService();
-
       List<Todo> todos = [];
 
       todos = await networkService.getAllTodos();
 
       emit(GetTodosState(todos));
     });
+
+    on<AddTodo>((event, emit) {});
   }
 }

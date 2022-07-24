@@ -10,3 +10,5 @@ class GetTodosState extends TodoState {
 
   GetTodosState(this.todos);
 }
+
+class AddTodoState extends TodoState {}
