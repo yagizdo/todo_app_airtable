@@ -17,4 +17,12 @@ class NetworkService extends NetworkClient implements INetworkService {
 
     return todos;
   }
+
+  @override
+  Future<void> addTodo(Fields todo) async {
+    dio.options.headers['content-Type'] = 'application/json';
+
+    await dio.post('$baseUrl/v0/$appID/Todos',
+        queryParameters: {"data": Fields(title: 'Test', description: 'Test2')});
+  }
 }
