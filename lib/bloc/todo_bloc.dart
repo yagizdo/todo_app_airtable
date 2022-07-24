@@ -15,12 +15,14 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<GetAllTodos>((event, emit) async {
       List<Todo> todos = [];
 
+      emit(LoadingState(true));
       todos = await networkService.getAllTodos();
 
       for (var i in todos) {
         print(i.fields!.title);
       }
 
+      emit(LoadingState(false));
       emit(GetTodosState(todos));
     });
 

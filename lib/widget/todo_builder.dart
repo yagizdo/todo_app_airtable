@@ -9,7 +9,13 @@ class TodoBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TodoBloc, TodoState>(
       builder: (context, state) {
-        if (state is GetTodosState) {
+        if (state is LoadingState) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Colors.white,
+            ),
+          );
+        } else if (state is GetTodosState) {
           return TodoList(state: state);
         } else {
           return const Center(

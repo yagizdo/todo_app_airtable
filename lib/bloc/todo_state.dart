@@ -12,3 +12,9 @@ class GetTodosState extends TodoState {
 }
 
 class AddTodoState extends TodoState {}
+
+class LoadingState extends TodoState {
+  final bool isLoading;
+
+  LoadingState(this.isLoading);
+}
