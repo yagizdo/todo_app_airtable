@@ -11,11 +11,11 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   TodoBloc() : super(TodoInitial()) {
     on<TodoEvent>((event, emit) {});
     on<GetAllTodos>((event, emit) async {
-      final NetworkService _networkService = NetworkService();
+      final NetworkService networkService = NetworkService();
 
       List<Todo> todos = [];
 
-      todos = await _networkService.getAllTodos();
+      todos = await networkService.getAllTodos();
 
       emit(GetTodosState(todos));
     });
