@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:todo_app_airtable/bloc/todo_bloc.dart';
-import 'package:todo_app_airtable/model/todo.dart';
+
+import '../bloc/todo_bloc.dart';
+import '../model/todo.dart';
 
 class AddTodoView extends StatefulWidget {
   const AddTodoView({Key? key}) : super(key: key);
@@ -18,8 +19,12 @@ class _AddTodoViewState extends State<AddTodoView> {
   // Description Controller
   late TextEditingController descController;
 
+  // Form key
+  late dynamic _formKey;
+
   @override
   void initState() {
+    _formKey = GlobalKey<FormState>();
     titleController = TextEditingController();
     descController = TextEditingController();
     super.initState();
@@ -39,6 +44,7 @@ class _AddTodoViewState extends State<AddTodoView> {
         title: const Text('Add New Todo'),
       ),
       body: Form(
+        key: _formKey,
         child: Column(
           children: [
             // Title
@@ -46,6 +52,12 @@ class _AddTodoViewState extends State<AddTodoView> {
               padding: EdgeInsets.all(10.w),
               child: TextFormField(
                 controller: titleController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Field is required.';
+                  }
+                  return null;
+                },
                 decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.green, width: 2.0),
@@ -86,12 +98,14 @@ class _AddTodoViewState extends State<AddTodoView> {
               height: 40.h,
               child: ElevatedButton(
                 onPressed: () {
-                  Todo todo = Todo(
-                      fields: Fields(
-                          title: titleController.text,
-                          description: descController.text));
-                  BlocProvider.of<TodoBloc>(context).add(AddTodo(todo));
-                  Navigator.pop(context);
+                  if (_formKey.currentState!.validate()) {
+                    Todo todo = Todo(
+                        fields: Fields(
+                            title: titleController.text,
+                            description: descController.text));
+                    BlocProvider.of<TodoBloc>(context).add(AddTodo(todo));
+                    Navigator.pop(context);
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
