@@ -94,7 +94,7 @@ class _AddTodoViewState extends State<AddTodoView> {
 
             // Add To-do Button
             SizedBox(
-              width: 250.w,
+              width: 355.w,
               height: 40.h,
               child: ElevatedButton(
                 onPressed: () {
