@@ -28,5 +28,13 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       emit(LoadingState(false));
       emit(GetTodosState(todos));
     });
+
+    on<DeleteTodo>((event, emit) async {
+      await networkService.deleteTodo(event.todo);
+      emit(LoadingState(true));
+      todos = await networkService.getAllTodos();
+      emit(LoadingState(false));
+      emit(GetTodosState(todos));
+    });
   }
 }

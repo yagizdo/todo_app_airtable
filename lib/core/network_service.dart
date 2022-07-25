@@ -47,4 +47,13 @@ class NetworkService extends NetworkClient implements INetworkService {
           "Authorization": "Bearer $apiKey",
         }));
   }
+
+  @override
+  Future<void> deleteTodo(Todo todo) async {
+    await dio.delete('$baseUrl/v0/$appID/Todos/${todo.id}',
+        options: Options(headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $apiKey",
+        }));
+  }
 }

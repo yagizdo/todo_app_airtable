@@ -10,3 +10,9 @@ class AddTodo extends TodoEvent {
 
   AddTodo(this.todo);
 }
+
+class DeleteTodo extends TodoEvent {
+  final Todo todo;
+
+  DeleteTodo(this.todo);
+}
