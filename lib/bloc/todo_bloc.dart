@@ -9,12 +9,11 @@ part 'todo_state.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
   final NetworkService networkService = NetworkService();
+  List<Todo> todos = [];
 
   TodoBloc() : super(TodoInitial()) {
     on<TodoEvent>((event, emit) {});
     on<GetAllTodos>((event, emit) async {
-      List<Todo> todos = [];
-
       emit(LoadingState(true));
       todos = await networkService.getAllTodos();
 
@@ -22,8 +21,12 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       emit(GetTodosState(todos));
     });
 
-    on<AddTodo>((event, emit) {
-      networkService.addTodo(event.todo);
+    on<AddTodo>((event, emit) async {
+      await networkService.addTodo(event.todo);
+      emit(LoadingState(true));
+      todos = await networkService.getAllTodos();
+      emit(LoadingState(false));
+      emit(GetTodosState(todos));
     });
   }
 }

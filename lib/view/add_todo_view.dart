@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todo_app_airtable/bloc/todo_bloc.dart';
+import 'package:todo_app_airtable/model/todo.dart';
 
 class AddTodoView extends StatefulWidget {
   const AddTodoView({Key? key}) : super(key: key);
@@ -82,7 +85,14 @@ class _AddTodoViewState extends State<AddTodoView> {
               width: 250.w,
               height: 40.h,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Todo todo = Todo(
+                      fields: Fields(
+                          title: titleController.text,
+                          description: descController.text));
+                  BlocProvider.of<TodoBloc>(context).add(AddTodo(todo));
+                  Navigator.pop(context);
+                },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                 ),

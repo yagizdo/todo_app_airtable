@@ -31,10 +31,15 @@ class _TodoBuilderState extends State<TodoBuilder> {
             ),
           );
         } else if (state is GetTodosState) {
+          if (BlocProvider.of<TodoBloc>(context).todos.isEmpty) {
+            return const Center(
+              child: Text('U dont have todos'),
+            );
+          }
           return TodoList(state: state);
         } else {
           return const Center(
-            child: Text('U dont have todos'),
+            child: Text('Something went wrong!'),
           );
         }
       },
