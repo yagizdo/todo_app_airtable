@@ -54,17 +54,22 @@ class _AddTodoViewState extends State<AddTodoView> {
                 controller: titleController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Field is required.';
+                    return 'Title is required.';
                   }
                   return null;
                 },
-                decoration: const InputDecoration(
-                  focusedBorder: OutlineInputBorder(
+                decoration: InputDecoration(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.green, width: 2.0),
                   ),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2.0),
                   ),
+                  errorBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red, width: 2.0),
+                  ),
+                  errorStyle:
+                      TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
                   hintText: 'Title',
                 ),
               ),
@@ -81,6 +86,9 @@ class _AddTodoViewState extends State<AddTodoView> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white, width: 2.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red, width: 2.0),
                   ),
                   hintText: 'Description',
                 ),
