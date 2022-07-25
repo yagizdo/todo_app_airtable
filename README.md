@@ -1,16 +1,46 @@
-# todo_app_airtable
+# Flutter - Todo App
 
-A new Flutter project.
+Todo App I made with Flutter and Airtable API.
 
-## Getting Started
+## Run Locally
 
-This project is a starting point for a Flutter application.
+Clone the project
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+  git clone https://github.com/yagizdo/todo_app_airtable
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Go to the project directory
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+  cd todo_app_airtable
+```
+
+Install dependencies
+
+```bash
+  flutter pub get
+```
+
+Run App
+
+```bash
+  flutter run
+```
+
+##  Libraries I use in the application:
+- Dio : https://pub.dev/packages/dio
+- Bloc : https://pub.dev/packages/bloc
+- Flutter Bloc : https://pub.dev/packages/flutter_bloc
+- Meta : https://pub.dev/packages/meta
+- Flutter Screen Util : https://pub.dev/packages/flutter_screenutil
+- Flutter Dotenv : https://pub.dev/packages/flutter_dotenv
+
+## App Video
+
+Soon..
+
+
+## Contributing
+
+Contributions are always welcome!
